@@ -1,0 +1,38 @@
+<!doctype html> <!-- 本地演示页面，无外部依赖。 -->
+<html lang="zh-CN"> <!-- 使用中文界面。 -->
+<head> <!-- 页面元信息。 -->
+  <meta charset="utf-8"> <!-- 支持中文资料。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 适配小屏。 -->
+  <title>归序 · 退货协同工作台</title> <!-- 演示产品名称。 -->
+  <link rel="stylesheet" href="./style.css"> <!-- 相对路径同时支持服务页面与本地文件预览。 -->
+  <script src="./app.js" defer></script> <!-- 与 HTML 同目录，避免 file 模式解析到文件系统根目录。 -->
+</head> <!-- 元信息结束。 -->
+<body> <!-- 页面主体。 -->
+  <aside class="sidebar"> <!-- 固定工作区导航。 -->
+    <div class="brand"><span class="brand-mark">↶</span><div>归序<span class="brand-sub">RETURNS WORKSPACE</span></div></div> <!-- 品牌。 -->
+    <div class="workspace-label">万象优选 / 服饰试点</div> <!-- 单品类合成工作区。 -->
+    <nav aria-label="工作台导航"> <!-- 可访问导航。 -->
+      <button class="nav active" data-tab="returns">◫ <span>退货状态</span></button> <!-- 只读业务状态。 -->
+      <button class="nav internal" data-tab="handoffs">⇄ <span>人工交接</span></button> <!-- 人工接手闭环。 -->
+      <button class="nav internal" data-tab="evidence">≡ <span>证据台账</span></button> <!-- 原始访谈依据。 -->
+    </nav> <!-- 导航结束。 -->
+    <div class="sidebar-foot"><span class="live-dot"></span> 本地合成演示<br><small>状态解释 · 人工协同 · 全程留痕</small><a href="/docs" target="_blank" rel="noopener">查看 API 文档 ↗</a></div> <!-- 明确运行边界。 -->
+  </aside> <!-- 侧栏结束。 -->
+  <main> <!-- 主工作区。 -->
+    <header class="topbar"><span>售后运营 <span class="muted">/</span> 协同工作台</span><div class="identity"><label for="account">演示身份</label><select id="account" aria-label="切换公开演示身份"></select></div></header> <!-- 服务端演示身份。 -->
+    <div class="content"> <!-- 可滚动内容。 -->
+      <div class="page-heading"><div><div class="eyebrow">AFTER-SALES OPERATIONS</div><h1 id="page-title">让每一笔退货，进度有据可查。</h1><p id="page-subtitle">签收、验收与退款分别呈现，让下一位接手人清楚该做什么。</p></div><button id="refresh" class="button secondary">↻ 刷新视图</button></div> <!-- 页面说明。 -->
+      <div class="notice"><strong>合成回放</strong><span>使用文档访谈与本地样例进行规则解释；数据有独立同步时间，真实业务指标仍待验证。</span><span class="notice-tag">不执行退款或账号处罚</span></div> <!-- 不把演示当真实集成。 -->
+      <section id="metrics" class="metrics" aria-label="当前身份可见数据统计"></section> <!-- 权限过滤后的分母。 -->
+      <section id="returns-panel"> <!-- 退货列表和详情。 -->
+        <div class="section-bar"><h2>退货单 <span id="case-count" class="count"></span></h2><div class="filters"><input id="search" type="search" placeholder="搜索售后单号、订单或商品" aria-label="搜索退货单"><label><input id="exceptions" type="checkbox"> 仅需人工核对</label></div></div> <!-- 搜索与异常筛选。 -->
+        <div class="workspace"><div id="case-list" class="case-list" aria-label="退货单列表"></div><article id="detail" class="detail"><div class="empty">正在读取本地快照…</div></article></div> <!-- 双栏工作台。 -->
+      </section> <!-- 退货页结束。 -->
+      <section id="handoffs-panel" hidden><div class="section-bar"><h2>人工交接队列</h2><span class="muted">接手确认后，发送方待办才结束</span></div><div id="handoff-list"></div></section> <!-- 交接状态机。 -->
+      <section id="evidence-panel" hidden><div class="section-bar"><h2>访谈证据台账</h2><span class="muted">原始编号来自训练文档，全部标注待核实</span></div><div id="evidence-list" class="evidence-list"></div></section> <!-- 依据可追溯。 -->
+      <footer>按唯一售后单统计，包裹与订单多对多不重复计数。四类异常转人工，源资料保持只读。</footer> <!-- 固定演示统计口径。 -->
+    </div> <!-- 内容结束。 -->
+  </main> <!-- 主区域结束。 -->
+  <div id="toast" role="status" aria-live="polite" hidden></div> <!-- 异步操作结果。 -->
+</body> <!-- 主体结束。 -->
+</html> <!-- 文档结束。 -->

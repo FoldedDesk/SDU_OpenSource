@@ -1,0 +1,24 @@
+[project] # 项目元信息。
+name = "sdu-returns-demo" # 本地演示包名。
+version = "0.1.0" # 原型版本。
+description = "基于访谈证据的退货验收与售后协同 FastAPI Demo" # 项目用途。
+requires-python = ">=3.11" # 使用现代类型标注。
+dependencies = [ # 仅引入运行接口所需的依赖。
+  "fastapi>=0.115,<1", # Web API 与参数校验。
+  "uvicorn>=0.30,<1", # ASGI 本地服务。
+  "pyyaml>=6,<7", # 读取统一配置。
+] # 运行依赖结束。
+
+[dependency-groups] # 本地开发工具。
+dev = ["httpx>=0.27,<1", "pytest>=8,<10", "ruff>=0.9,<1"] # 接口回归及静态检查。
+
+[tool.pytest.ini_options] # 测试配置。
+testpaths = ["tests"] # 限定测试目录。
+pythonpath = ["."] # 从仓库根目录加载应用。
+
+[tool.ruff] # 静态检查配置。
+target-version = "py311" # 保持 Python 3.11 兼容。
+line-length = 120 # 中文注释允许较宽行。
+
+[tool.ruff.lint] # 选择有效错误检查。
+select = ["E4", "E7", "E9", "F", "I"] # 检查语法、导入及未使用变量。

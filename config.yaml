@@ -1,0 +1,23 @@
+app: # 服务配置，全部为本地合成演示用途。
+  title: 退货验收与售后协同 # OpenAPI 名称。
+  host: 127.0.0.1 # 默认仅监听本机。
+  port: 8000 # 默认演示端口。
+  database: data/demo.sqlite3 # 相对于仓库根目录的数据库。
+  engine: evidence_rules # 使用可复现规则，不调用外部大模型。
+pilot: # 尚待真实业务确认的演示约定。
+  category: 服饰 # 单品类试点样例。
+  snapshot_max_age_hours: 12 # 每天两次更新的演示周期。
+  handoff_sla_hours: 4 # 演示升级时限，文档未确认真实数值。
+  evaluation_retention_days: 90 # 访谈中的暂定期限，不自动删除审计。
+rules: # 合成规则版本，不能当成正式制度。
+  version: demo-2026.11-v1 # 默认有效演示规则。
+  effective_from: "2026-01-01" # 使用字符串日期，确保建议依据能稳定序列化。
+accounts: # 公开的演示凭证；仅用于本机合成数据，不是真实登录系统。
+  - {id: support, name: 唐映秋, role: support, label: 售后工单员, token: demo-support} # 分派岗位。
+  - {id: inspector, name: 林亦舟, role: inspector, label: 退货质检员, token: demo-inspector} # 质检岗位。
+  - {id: manager, name: 顾明岚, role: manager, label: 售后运营经理, token: demo-manager} # 运营岗位。
+  - {id: engineer, name: 秦芮, role: engineer, label: OMS工程师, token: demo-engineer} # 系统岗位。
+  - {id: risk, name: 傅景, role: risk, label: 交易风险专员, token: demo-risk} # 风险岗位。
+  - {id: supervisor, name: 叶书, role: supervisor, label: 消费者服务主管, token: demo-supervisor} # 服务岗位。
+  - {id: customer-a, name: 演示客户甲, role: customer, label: 客户甲, token: demo-customer-a} # 仅能查看本人订单。
+  - {id: customer-b, name: 演示客户乙, role: customer, label: 客户乙, token: demo-customer-b} # 用于验证订单隔离。
